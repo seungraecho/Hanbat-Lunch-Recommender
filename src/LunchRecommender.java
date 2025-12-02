@@ -147,6 +147,10 @@ public class LunchRecommender extends JFrame {
 
             // 2. Determine today's day of week
             Calendar cal = Calendar.getInstance();
+            int hour = cal.get(Calendar.HOUR_OF_DAY);
+            if (hour >= 19) {
+                cal.add(Calendar.DAY_OF_MONTH, 1);
+            }
             int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK); // Sun=1, Mon=2, ...
 
             if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
@@ -170,6 +174,7 @@ public class LunchRecommender extends JFrame {
             menuContent = menuContent.replace("&nbsp;", " ");
             menuContent = menuContent.replace("&lt;", "<");
             menuContent = menuContent.replace("&gt;", ">");
+            menuContent = menuContent.replace("&quot;", "\"");
             menuContent = menuContent.replace("\\/", "/"); // Handle escaped slashes
 
             return menuContent;
@@ -185,7 +190,12 @@ public class LunchRecommender extends JFrame {
             return "메뉴 정보를 가져오는데 실패했습니다.";
 
         SimpleDateFormat sdf = new SimpleDateFormat("MM월 dd일");
-        String todayStr = sdf.format(new Date());
+        Calendar cal = Calendar.getInstance();
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        if (hour >= 19) {
+            cal.add(Calendar.DAY_OF_MONTH, 1);
+        }
+        String todayStr = sdf.format(cal.getTime());
 
         try {
             // Find today's date in the HTML
@@ -197,22 +207,24 @@ public class LunchRecommender extends JFrame {
 
             // The structure is:
             // <tr><th>Date</th><td>Breakfast</td><td>Lunch</td><td>Dinner</td></tr>
-            // We need the 2nd <td> (Lunch)
+            // We need the 1st <td> (Breakfast)
 
             int firstTd = html.indexOf("<td", dateIndex);
-            int secondTd = html.indexOf("<td", firstTd + 1); // Lunch
 
-            if (secondTd == -1)
+            if (firstTd == -1)
                 return "식단 정보를 찾을 수 없습니다.";
 
-            int closeTd = html.indexOf("</td>", secondTd);
-            String menuContent = html.substring(secondTd, closeTd);
+            int closeTd = html.indexOf("</td>", firstTd);
+            String menuContent = html.substring(firstTd, closeTd);
 
             // Remove tags and clean up
             menuContent = menuContent.replaceAll("<br\\s*/?>", "\n");
             menuContent = menuContent.replaceAll("<.*?>", "");
             menuContent = menuContent.replaceAll("&amp;", "&");
             menuContent = menuContent.replaceAll("&nbsp;", " ");
+            menuContent = menuContent.replace("&lt;", "<");
+            menuContent = menuContent.replace("&gt;", ">");
+            menuContent = menuContent.replace("&quot;", "\"");
             menuContent = menuContent.trim();
 
             return menuContent;
