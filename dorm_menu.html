@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="��諛�����援� ��������愿�" />
+<meta name="author" content="����������" />
+<meta name="copyright" content="COPYRIGHT &copy; 2017 HANBAT NATIONAL UNIVERSITY. ALL RIGHTS RESERVED." />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>��諛�����援� ��������愿�</title>
+<meta property="og:title"				content="BTL愿� &lt; ���⑦�� &lt; ����愿� ���� - ��諛�����援� ��������愿�" />
+<meta property="og:site_name"			content="��諛�����援� ��������愿�" />
+<meta property="og:type"				content="website" />
+<meta property="og:url"					content="http://dorm.hanbat.ac.kr/sub-020502" />
+<!--[if lt IE 9]>
+<script src="/javascripts/libraries/html5shiv/html5shiv.js"></script>
+<script src="/javascripts/libraries/respond/respond.min.js"></script>
+<![endif]-->
+<link href="/_vendors/css/gBtn.css" rel="stylesheet" type="text/css" charset="utf-8" media="all" />
+<link href="/_vendors/css/jquery/jquery.jgrowl.css" rel="stylesheet" type="text/css" charset="utf-8" media="all" />
+<link href="/_vendors/css/jquery/jquery.showbox.css" rel="stylesheet" type="text/css" charset="utf-8" media="all" />
+<link href="/_vendors/css/jquery/prettyPhoto.css" rel="stylesheet" type="text/css" charset="utf-8" media="all" />
+<link href="/_vendors/theme/redmond/theme.css" rel="stylesheet" type="text/css" charset="utf-8" media="all" />
+<script type="text/javascript" src="/attach/cache/351eb25535a91230a39f3903f7fd071a_1495185587.js"></script>
+<script type="text/javascript" src="/attach/cache/924c1bca117355396426eceaaee2f27c_1587691860.js"></script>
+
+<script type="text/javascript">
+ //<![CDATA[
+var loading = '';
+$(document).ready(function() {
+	loading = $('<img src="/_vendors/images/loading2.png" width="113" height="21" alt="Loading" />').css({position:'absolute', left:'10px', top:'10px'}).prependTo(document.body).hide();
+
+	$(document).ajaxStart(function() { loading.css({top:$('html').scrollTop()+10+'px'}).show(); });
+	$(document).ajaxStop(function() { loading.hide(); });
+	$(document).ajaxError(function(e, xhr, settings, exception) { alert('�쇱���� �ㅻ�������. ������ �ㅼ�� ������ 二쇱�몄��.'); });
+	$.ajaxSetup({timeout: 10000});
+
+	$('<div id="SLB_film"></div><div id="SLB_content" onClick="showBox();" align="center"><table border="0" cellpadding="0" cellspacing="0"><tr><td class="slb_top_left"></td><td class="slb_top"></td><td class="slb_top_right"></td></tr><tr><td class="slb_left"></td><td id="slb_main" class="slb_center"></td><td class="slb_right"></td></tr><tr><td class="slb_bottom_left"></td><td class="slb_bottom"></td><td class="slb_bottom_right"></td></tr></table></div><div id="popupscript" style="display:none"></div>').prependTo('body');
+
+
+	if($.browser.msie && $.browser.version == '6.0')
+	{
+		jqPngFix();
+	}
+
+	$(window).on('hashchange', function(){
+		var hash = location.hash.replace('#', '');
+		var hash_obj = $('a[rel="' + hash + '"]');
+		if(hash && hash_obj.length > 0)
+		{
+			var destination = $(hash_obj).offset().top;
+			$("html:not(:animated),body:not(:animated)").animate({ scrollTop: destination}, 1100, function() {
+				location.hash = 'none';
+			});
+		}
+		return false;
+	}).trigger('hashchange');
+
+	
+	});
+	//]]>
+</script>
+
+<link href="/css/korean/sub_new.css" rel="stylesheet" type="text/css" charset="utf-8" media="all" />
+<link href="/css/korean/respond/sub.css" rel="stylesheet" type="text/css" charset="utf-8" media="all" />
+<script type="text/javascript" src="/javascripts/jquery/plugins/jquery-plani.menu.js"></script>
+<script type="text/javascript" src="/js/korean/layout.js"></script>
+
+	<script type="text/javascript">
+		;$(function()
+		{
+			$('#snb a').on('click', function()
+			{
+				if ( $(this).next('ul').length == 1 )
+				{
+					if ($(this).next('ul').is(':hidden') == true)
+					{
+						$(this).next('ul').slideDown();
+					}
+					else
+					{
+						$(this).next('ul').slideUp();
+					}
+					
+					return false;
+				}
+			});
+		});
+	</script>
+
+</head>
+
+
+
+<body class="sub">
+	<!-- skip -->
+	<div id="skip">
+		<ul>
+			<li><a href="#contents">蹂몃Ц 諛�濡�媛�湲�</a></li>
+			<li><a href="#lnb">二� 硫��� 諛�濡�媛�湲�</a></li>
+			<li><a href="#footer">���� 諛�濡�媛�湲�</a></li>
+		</ul>
+	</div>
+	<!-- //skip -->
+	<!-- header -->
+	<div id="layout-header">
+	<header id="header">
+		<h1 id="logo">
+			<a href="/">
+            <img src="/images/korean/layout/logo.png" alt="��諛�����援� ��������愿�" />
+            <img src="/images/korean/layout/logo.gif" alt="��諛�����援� ��������愿�" />
+            </a>
+		</h1>
+
+		<nav id="gnb">
+			<h2 class="hidden">���⑤���</h2>
+			<ul class="menu">
+								<li><a href="/login">濡�洹몄��</a></li>
+								<li><a href="http://www.hanbat.ac.kr" target="_blank" rel="noopener noreferrer">��諛�����援� 諛�濡�媛�湲�</a></li>
+			</ul>
+		</nav>
+
+
+
+
+
+		<nav id="lnb">
+			<h2 class="hidden">二쇰���</h2>
+
+			<a href="#lnb" class="control open"><span class="hidden">�닿린</span></a>
+
+			<ul class="menu">
+
+				
+							
+
+							<li class="group-01">
+								<a href="/sub-01"   potal="">����愿� ��媛�</a>
+								<ul class="depth-02">
+
+																<li><a href="/sub-0101"  potal="">愿��μ�몄�щ�</a></li>
+															<li><a href="/sub-0102"  potal="">�ㅻ┰紐⑹�� 諛� �고��</a></li>
+															<li><a href="/sub-0103"  potal="">吏�������</a></li>
+															<li><a href="/sub-0104"  potal="">����愿� ���ㅼ����</a></li>
+															<li><a href="/sub-0105"  potal="">����愿� ���щ낫湲�</a></li>
+															<li><a href="/sub-0106"  potal="">李얠���ㅼ���� 湲�</a></li>
+						</ul></li>	
+
+							<li class="group-02">
+								<a href="/sub-02"   potal="">����愿� ����</a>
+								<ul class="depth-02">
+
+																<li><a href="/sub-0201"  potal="">����愿� 愿��� 洹���</a></li>
+															<li><a href="/sub-0202"  potal="">����愿�鍮�</a></li>
+															<li><a href="/sub-0203"  potal="">愿�����移�</a></li>
+															<li><a href="/sub-0204"  potal="">踰���遺�怨쇳��</a></li>
+															<li><a href="/sub-0205"  potal="">���⑦��</a></li>
+															<li><a href="/btl-info"  potal="">BTL��蹂닿났媛�</a></li>
+						</ul></li>	
+
+							<li class="group-03">
+								<a href="/sub-03"   potal="">紐⑥�����</a>
+								<ul class="depth-02">
+
+																<li><a href="/sub-0301"  potal="">愿�����諛�</a></li>
+															<li><a href="/sub-0302"  target="_blank" potal="1">���ъ��泥�</a></li>
+															<li><a href="/sub-0303"  target="_blank" potal="1">�⑷꺽����</a></li>
+															<li><a href="/sub-0304"  target="_blank" potal="1">怨�吏���異���</a></li>
+															<li><a href="/sub-0305"  target="_blank" potal="">�몄�ㅻ같��</a></li>
+															<li><a href="/sub-0309"  potal="">����愿� ���댁�ъ����</a></li>
+						</ul></li>	
+
+							<li class="group-04">
+								<a href="/sub-04"   potal="">愿�����移���</a>
+								<ul class="depth-02">
+
+																<li><a href="/sub-0401"  potal="">��移���移�</a></li>
+															<li><a href="/sub-0405"  potal="">踰���議고��</a></li>
+															<li><a href="/sub-0406"  potal="">踰���媛�硫댁��泥���</a></li>
+															<li><a href="/sub-0407"  potal="">愿�����移����� 諛�������.</a></li>
+						</ul></li>	
+
+							<li class="group-05">
+								<a href="/sub-05"   potal="">怨듦�����</a>
+								<ul class="depth-02">
+
+																<li><a href="/sub-0501"  potal="">怨듭��ы��</a></li>
+															<li><a href="/sub-0502"  target="_blank" potal="">���ъ�쇱��</a></li>
+															<li><a href="/sub-0503"  potal="">��猷���(������)</a></li>
+															<li><a href="/sub-0504"  potal="">��二쇳���� 吏�臾�</a></li>
+															<li><a href="/sub-0505"  potal="">����寃�����</a></li>
+															<li><a href="/sub-0507"  potal="">���ㅻЪ 怨��μ��怨�</a></li>
+															<li><a href="/sub-0508"  potal="">嫄댁���ы��</a></li>
+						</ul></li>
+			</ul>
+
+			<p class="ad">
+				���� ���� 苡����� 怨듦�, 癒몃Т瑜닿� �띠�� 怨듦�, ��由��ㅼ�� 異��듭�� 怨듦� 
+				<strong><span>援�由쏀��諛�����援�</span> ��������愿�</strong>
+			</p>
+		</nav>
+	</header>
+</div>
+<p class="lnb-bg"></p>	<!-- //header -->
+
+
+<!-- layout-container -->
+<div id="layout-container">
+	<div id="container">
+		<!-- container-left -->
+		<div id="container-left">
+		
+
+			<nav id="snb">
+				<h2 class="hidden">��釉�硫���</h2>
+				<ul class="menu">
+					<li>
+						<a href="javascript:void(0);">����愿� ����</a>
+						<ul>
+							<li><a href='/sub-01' portal='' />����愿� ��媛�</a></li><li><a href='/sub-010504' portal='' />��������愿� ��移���</a></li><li><a href='/sub-010501' portal='' />��諛�愿�</a></li><li><a href='/sub-03' portal='' />紐⑥�����</a></li><li><a href='/sub-010502' portal='' />��1BTL愿�(1李�)</a></li><li><a href='/sub-04' portal='' />愿�����移���</a></li><li><a href='/sub-010503' portal='' />��2BTL愿�(3李�)</a></li><li><a href='/sub-05' portal='' />怨듦�����</a></li><li><a href='/membership' portal='' />����怨듦�</a></li>						</ul>
+					</li>
+
+
+					<li class="on">
+						<a href="javascript:void(0);">���⑦��</a>
+						<ul>
+							<li><a href='/sub-0201' portal=''/>����愿� 愿��� 洹���</a></li><li><a href='/sub-0202' portal=''/>����愿�鍮�</a></li><li><a href='/sub-0203' portal=''/>愿�����移�</a></li><li><a href='/sub-0204' portal=''/>踰���遺�怨쇳��</a></li><li><a href='/btl-info' portal=''/>BTL��蹂닿났媛�</a></li>						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<!-- //container-left -->
+
+
+
+		<!-- container-body -->
+		<section id="container-body">
+			<!-- sub title -->
+			<p id="page-location">
+				<a href="/sub-0204" target="" class="prev" style="display:block;">踰���遺�怨쇳��</a>
+				<a href="/" target="" class="next" style="display:none;"></a>
+			</p>
+			<h1 id="contents-title">���⑦��</h1>
+
+
+			<!-- sub title -->
+			<div id="contents">
+				                                <nav id="tabmenu">
+									<h2 class="hidden">��硫���</h2>
+                                        <ul>
+
+											<li class="on"><a href="/sub-020502">BTL愿�</a></li>
+		
+										 </ul>
+                                </nav>
+
+
+				
+<!-- ���댁� ���� -->
+<h2 class="title-depth-01">���⑦��</h2>
+<h3 class="title-depth-02">���ъ��媛�</h3>
+<ul class="bul-depth-01">
+    <li>[��~������] ��移� : 07:30~09:00 | ���� : 12:00��14:00 | ���� : 17:30~19:00 </li>
+    <li>[�쇱���� 諛� 怨듯�댁��] ��移� : 08:00~09:00 | ���� : 12:00~13:00 | ���� : 18:00��19:00 </li>
+</ul>
+
+<div class="table-type-01 diet">
+    <table>
+        <caption>���쇰� ��移� ���� ����</caption>
+        <thead>
+            <tr>
+                <th scope="col">����</th>
+                <th scope="col">��移�</th>
+				<th scope="col">����</th>
+				<th scope="col">����</th>
+            </tr>
+        </thead>
+        <tbody>
+	            <tr>
+				<th scope="row">11�� 24��(��)</th>
+                <td class="txt-left">
+					��諛�<br />
+��遺�洹쇰�����κ뎅<br />
+���댁뭅��蹂띠��<br />
+��肄⑹�곌렐議곕┝<br />
+諛곗�源�移�<br />
+���ㅽ�몄��鍮�/�⑤━��&amp;�곗��				</td>
+				<td class="txt-left">
+					李⑥“諛�<br />
+遺�李쎈������遺�李�媛�<br />
+����源���<br />
+����由щ���蹂띠��<br />
+移�而ㅻ━����泥�臾댁묠<br />
+諛곗�源�移�<br />
+&lt;Plus Menu&gt;<br />
+����異����щ��*������2醫�				</td>
+				<td class="txt-left">
+					��諛�<br />
+留ㅼ�댁쉘��臾쇨뎅<br />
+�ъ��諛��⑤�&amp;��二쇰낭��<br />
+李몄��쇱�蹂띠��<br />
+臾대����대Т移�<br />
+諛곗�源�移�				</td>
+            </tr>
+	            <tr>
+				<th scope="row">11�� 25��(��)</th>
+                <td class="txt-left">
+					��諛�<br />
+��怨고��<br />
+誘명�몃낵議곕┝<br />
+留���醫��대У蹂띠��<br />
+源���湲�<br />
+���ㅽ�몄��鍮�/�⑤━��&amp;�곗��				</td>
+				<td class="txt-left">
+					湲곗�λ갈<br />
+泥���珥��대У援�<br />
+濡���李���<br />
+��遺���猷⑥�湲�<br />
+誘몄��以�湲곕낭��<br />
+諛곗�源�移�<br />
+&lt;Plus Menu&gt;<br />
+����異����щ��*������2醫�				</td>
+				<td class="txt-left">
+					�ロ��留������ㅼ��④���<br />
+異�媛�諛�<br />
+�щ┝�ㅽ��<br />
+��諛곗����щ��<br />
+�ㅼ�댄�쇳��<br />
+諛곗�源�移�				</td>
+            </tr>
+	            <tr>
+				<th scope="row">11�� 26��(��)</th>
+                <td class="txt-left">
+					��諛�<br />
+肄⑸��臾쇰Т梨�援�<br />
+誘몃����源���<br />
+怨���李�<br />
+諛곗�源�移�<br />
+���ㅽ�몄��鍮�/�⑤━��&amp;�곗��				</td>
+				<td class="txt-left">
+					��吏���援���<br />
+異�媛�諛�<br />
+吏щ�援곕���<br />
+�����ㅼ�댁�����<br />
+諛곗�源�移�<br />
+&lt;Plus Menu&gt;<br />
+����異����щ��*������2醫�				</td>
+				<td class="txt-left">
+					��諛�<br />
+移�利�遺���李�媛�<br />
+��������<br />
+援ъ�댁�대У蹂띠��<br />
+�쇨��대같異�臾댁묠<br />
+源���湲�				</td>
+            </tr>
+	            <tr>
+				<th scope="row">11�� 27��(紐�)</th>
+                <td class="txt-left">
+					��諛�<br />
+寃쎌�������쇳�곗��怨�湲곕Т援�<br />
+���〓�異�由ъ���μ“由�<br />
+��遺�援ъ��*������<br />
+源���湲�<br />
+���ㅽ�몄��鍮�/�⑤━��&amp;�곗��				</td>
+				<td class="txt-left">
+					踰��곗빱由щ��諛�<br />
+移��⑦����釉�由щ��<br />
+�ㅼ�댄�쇳��<br />
+諛곗�源�移�<br />
+&lt;Plus Menu&gt;<br />
+����異����щ��*������2醫�				</td>
+				<td class="txt-left">
+					��諛�<br />
+堉�����媛�����<br />
+媛���誘몄뭅����源�<br />
+源�移���<br />
+�ㅼ�대�異�臾댁묠<br />
+源���湲�				</td>
+            </tr>
+	            <tr>
+				<th scope="row">11�� 28��(湲�)</th>
+                <td class="txt-left">
+					��諛�<br />
+�⑺������遺���<br />
+�ㅽ�멸���蹂띠��<br />
+�щ��源�/������<br />
+諛곗�源�移�<br />
+���ㅽ�몄��鍮�/�⑤━��&amp;�곗��				</td>
+				<td class="txt-left">
+					�щ━怨고��<br />
+��諛�<br />
+�ㅼ��댁�臾댁묠<br />
+����由щУ/������<br />
+��梨�肄⑸��臾쇰Т移�<br />
+源���湲�<br />
+&lt;Plus Menu&gt;<br />
+����異����щ��*������2醫�				</td>
+				<td class="txt-left">
+					��諛�<br />
+�대У源�移�援�<br />
+���↔��ν��梨�遺�怨�湲�<br />
+�몃��ㅺ묠蹂띠��<br />
+����源살��吏�<br />
+源���湲�				</td>
+            </tr>
+	            <tr>
+				<th scope="row">11�� 29��(��)</th>
+                <td class="txt-left">
+					��諛�&amp;��猷쎌�<br />
+李몄�源�移�李�媛�<br />
+怨���留���<br />
+��媛���議곕┝<br />
+源���湲�<br />
+�곗��				</td>
+				<td class="txt-left">
+					��怨�湲곗�쇱�蹂띠��諛�<br />
+�곕��援�臾�<br />
+踰��곌�由�媛�����源�<br />
+硫�異�由щ��댁���щ��<br />
+諛곗�源�移�<br />
+��援щⅤ��				</td>
+				<td class="txt-left">
+					��諛�<br />
+��湲�移����κ뎅<br />
+�����ㅻ━蹂띠��<br />
+�쇱��臾듬Т移�<br />
+嫄댄����蹂띠��<br />
+諛곗�源�移�				</td>
+            </tr>
+	            <tr>
+				<th scope="row">11�� 30��(��)</th>
+                <td class="txt-left">
+					���곕�嫄�<br />
+�⑦�몃��щ┝�ㅽ��<br />
+�⑤━��&amp;�곗��<br />
+怨�援щ�留���<br />
+�ш낵				</td>
+				<td class="txt-left">
+					��諛�<br />
+��留����↔���<br />
+怨����μ“由�<br />
+���≪�댄�몃�蹂띠��<br />
+��異�遺�異�臾댁묠<br />
+源���湲�				</td>
+				<td class="txt-left">
+					��諛�<br />
+肄⑸��臾쇨뎅<br />
+����源���/����<br />
+已�硫댁�쇱�臾댁묠<br />
+�곗���ㅺ묠臾댁묠<br />
+諛곗�源�移�				</td>
+            </tr>
+	        </tbody>
+    </table>
+</div>
+
+<h3 class="title-depth-02">���곗� ����</h3>
+<ul class="bul-depth-01">
+    <li>��怨�湲�(�몄＜��), �쇱�怨�湲�(援��댁��), ��怨�湲�(援��댁��) , ��/�↔끝(援��댁��), 諛곗�源�移�(諛곗�:援��댁��, 怨�異�遺�:以�援���), ��,李�媛��� 源�移�(諛곗�:以�援���, 怨�異�遺�:以�援���)</li>
+</ul>
+<!-- //���댁� ���� -->
+
+			</div>
+
+
+		</section>
+
+
+
+		<!-- //container-body -->
+	</div>
+</div>
+<!-- //layout-container -->
+
+<!-- layout-footer -->
+<div class="footer">
+    <div class="footer_top">
+        <div class="layout">
+			<ul class="site_map">
+                <li><a href="http://www.hanbat.ac.kr/" target="_blank" rel="noopener noreferrer" title="��李쎌�대┝">��諛�����援�</a></li>
+                <li><a href="https://my.hanbat.ac.kr/" target="_blank" rel="noopener noreferrer" title="��李쎌�대┝">�듯�⑺���ъ��蹂댁���ㅽ��</a></li>
+                <li><a href="https://linc.hanbat.ac.kr/" target="_blank" rel="noopener noreferrer" title="��李쎌�대┝">LINK+�ъ����</a></li>
+                <li><a href="https://www.hanbat.ac.kr/fund/" target="_blank" rel="noopener noreferrer" title="��李쎌�대┝">諛���湲곌�</a></li>
+                <li><a href="http://www.hanbat.ac.kr/kor/sub05_08.do" target="_blank" rel="noopener noreferrer" title="��李쎌�대┝">�명�곕�룹�紐�諛�湲�</a></li>
+                <li><a href="https://lib.hanbat.ac.kr/" target="_blank" rel="noopener noreferrer" title="��李쎌�대┝">����愿�</a></li>
+                <li><a href="https://mail.hanbat.ac.kr" target="_blank" rel="noopener noreferrer" title="��李쎌�대┝">�밸���</a></li>
+                <li><a href="http://cyber.hanbat.ac.kr/" target="_blank" rel="noopener noreferrer" title="��李쎌�대┝">�ъ�대���諛�</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer_bottom">
+        <div class="layout">
+            <ul class="menu">
+                <li><a href="https://www.hanbat.ac.kr/kor/sitemap_03.do" target="_blank" rel="noopener noreferrer" title="��李쎌�대┝"><strong>媛��몄��蹂댁�由щ갑移�</strong></a></li>
+                <li><a href="/sub-020101">����愿�洹���</a></li>
+                <li><a href="/sub-0503">��猷���</a></li>
+                <li><a href="/sub-0106">李얠���ㅼ����湲�</a></li>
+                <li><a href="/sub-0204">踰���遺�怨쇳��</a></li>
+				<li><a href="/sub-0301">愿�����諛�����</a></li>	
+			</ul>
+            <address>
+                <p><em>34158 ����愿����� ���깃뎄 ������濡� 125 (��紐���)</em>   <em><span>TEL</span> : <a href="tel:042-828-8778">042-828-8778</a>   <span>FAX</span> : 042-821-1941</em>
+                <p><em>COPYRIGHT (C) 2017 BY HANBAT NATIONAL UNIVERSITY.</em> <em>ALL RIGHTS RESERVED</em></p></p>
+            </address>
+        </div>
+    </div>
+</div>
+<!-- //layout-footer -->
+</body>
+</html>

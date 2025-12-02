@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="한밭대학교 학생생활관" />
+<meta name="author" content="㈜플랜아이" />
+<meta name="copyright" content="COPYRIGHT &copy; 2017 HANBAT NATIONAL UNIVERSITY. ALL RIGHTS RESERVED." />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>한밭대학교 학생생활관</title>
+<meta property="og:title"				content="BTL관 &lt; 식단표 &lt; 생활관 안내 - 한밭대학교 학생생활관" />
+<meta property="og:site_name"			content="한밭대학교 학생생활관" />
+<meta property="og:type"				content="website" />
+<meta property="og:url"					content="http://dorm.hanbat.ac.kr/sub-020502" />
+<!--[if lt IE 9]>
+<script src="/javascripts/libraries/html5shiv/html5shiv.js"></script>
+<script src="/javascripts/libraries/respond/respond.min.js"></script>
+<![endif]-->
+<link href="/_vendors/css/gBtn.css" rel="stylesheet" type="text/css" charset="utf-8" media="all" />
+<link href="/_vendors/css/jquery/jquery.jgrowl.css" rel="stylesheet" type="text/css" charset="utf-8" media="all" />
+<link href="/_vendors/css/jquery/jquery.showbox.css" rel="stylesheet" type="text/css" charset="utf-8" media="all" />
+<link href="/_vendors/css/jquery/prettyPhoto.css" rel="stylesheet" type="text/css" charset="utf-8" media="all" />
+<link href="/_vendors/theme/redmond/theme.css" rel="stylesheet" type="text/css" charset="utf-8" media="all" />
+<script type="text/javascript" src="/attach/cache/351eb25535a91230a39f3903f7fd071a_1495185587.js"></script>
+<script type="text/javascript" src="/attach/cache/924c1bca117355396426eceaaee2f27c_1587691860.js"></script>
+
+<script type="text/javascript">
+ //<![CDATA[
+var loading = '';
+$(document).ready(function() {
+	loading = $('<img src="/_vendors/images/loading2.png" width="113" height="21" alt="Loading" />').css({position:'absolute', left:'10px', top:'10px'}).prependTo(document.body).hide();
+
+	$(document).ajaxStart(function() { loading.css({top:$('html').scrollTop()+10+'px'}).show(); });
+	$(document).ajaxStop(function() { loading.hide(); });
+	$(document).ajaxError(function(e, xhr, settings, exception) { alert('일시적 오류입니다. 잠시후 다시 시도해 주세요.'); });
+	$.ajaxSetup({timeout: 10000});
+
+	$('<div id="SLB_film"></div><div id="SLB_content" onClick="showBox();" align="center"><table border="0" cellpadding="0" cellspacing="0"><tr><td class="slb_top_left"></td><td class="slb_top"></td><td class="slb_top_right"></td></tr><tr><td class="slb_left"></td><td id="slb_main" class="slb_center"></td><td class="slb_right"></td></tr><tr><td class="slb_bottom_left"></td><td class="slb_bottom"></td><td class="slb_bottom_right"></td></tr></table></div><div id="popupscript" style="display:none"></div>').prependTo('body');
+
+
+	if($.browser.msie && $.browser.version == '6.0')
+	{
+		jqPngFix();
+	}
+
+	$(window).on('hashchange', function(){
+		var hash = location.hash.replace('#', '');
+		var hash_obj = $('a[rel="' + hash + '"]');
+		if(hash && hash_obj.length > 0)
+		{
+			var destination = $(hash_obj).offset().top;
+			$("html:not(:animated),body:not(:animated)").animate({ scrollTop: destination}, 1100, function() {
+				location.hash = 'none';
+			});
+		}
+		return false;
+	}).trigger('hashchange');
+
+	
+	});
+	//]]>
+</script>
+
+<link href="/css/korean/sub_new.css" rel="stylesheet" type="text/css" charset="utf-8" media="all" />
+<link href="/css/korean/respond/sub.css" rel="stylesheet" type="text/css" charset="utf-8" media="all" />
+<script type="text/javascript" src="/javascripts/jquery/plugins/jquery-plani.menu.js"></script>
+<script type="text/javascript" src="/js/korean/layout.js"></script>
+
+	<script type="text/javascript">
+		;$(function()
+		{
+			$('#snb a').on('click', function()
+			{
+				if ( $(this).next('ul').length == 1 )
+				{
+					if ($(this).next('ul').is(':hidden') == true)
+					{
+						$(this).next('ul').slideDown();
+					}
+					else
+					{
+						$(this).next('ul').slideUp();
+					}
+					
+					return false;
+				}
+			});
+		});
+	</script>
+
+</head>
+
+
+
+<body class="sub">
+	<!-- skip -->
+	<div id="skip">
+		<ul>
+			<li><a href="#contents">본문 바로가기</a></li>
+			<li><a href="#lnb">주 메뉴 바로가기</a></li>
+			<li><a href="#footer">하단 바로가기</a></li>
+		</ul>
+	</div>
+	<!-- //skip -->
+	<!-- header -->
+	<div id="layout-header">
+	<header id="header">
+		<h1 id="logo">
+			<a href="/">
+            <img src="/images/korean/layout/logo.png" alt="한밭대학교 학생생활관" />
+            <img src="/images/korean/layout/logo.gif" alt="한밭대학교 학생생활관" />
+            </a>
+		</h1>
+
+		<nav id="gnb">
+			<h2 class="hidden">상단메뉴</h2>
+			<ul class="menu">
+								<li><a href="/login">로그인</a></li>
+								<li><a href="http://www.hanbat.ac.kr" target="_blank" rel="noopener noreferrer">한밭대학교 바로가기</a></li>
+			</ul>
+		</nav>
+
+
+
+
+
+		<nav id="lnb">
+			<h2 class="hidden">주메뉴</h2>
+
+			<a href="#lnb" class="control open"><span class="hidden">열기</span></a>
+
+			<ul class="menu">
+
+				
+							
+
+							<li class="group-01">
+								<a href="/sub-01"   potal="">생활관 소개</a>
+								<ul class="depth-02">
+
+																<li><a href="/sub-0101"  potal="">관장인사말</a></li>
+															<li><a href="/sub-0102"  potal="">설립목적 및 연혁</a></li>
+															<li><a href="/sub-0103"  potal="">직원안내</a></li>
+															<li><a href="/sub-0104"  potal="">생활관 시설안내</a></li>
+															<li><a href="/sub-0105"  potal="">생활관 둘러보기</a></li>
+															<li><a href="/sub-0106"  potal="">찾아오시는 길</a></li>
+						</ul></li>	
+
+							<li class="group-02">
+								<a href="/sub-02"   potal="">생활관 안내</a>
+								<ul class="depth-02">
+
+																<li><a href="/sub-0201"  potal="">생활관 관련 규정</a></li>
+															<li><a href="/sub-0202"  potal="">생활관비</a></li>
+															<li><a href="/sub-0203"  potal="">관생수칙</a></li>
+															<li><a href="/sub-0204"  potal="">벌점부과표</a></li>
+															<li><a href="/sub-0205"  potal="">식단표</a></li>
+															<li><a href="/btl-info"  potal="">BTL정보공개</a></li>
+						</ul></li>	
+
+							<li class="group-03">
+								<a href="/sub-03"   potal="">모집안내</a>
+								<ul class="depth-02">
+
+																<li><a href="/sub-0301"  potal="">관생선발</a></li>
+															<li><a href="/sub-0302"  target="_blank" potal="1">입사신청</a></li>
+															<li><a href="/sub-0303"  target="_blank" potal="1">합격안내</a></li>
+															<li><a href="/sub-0304"  target="_blank" potal="1">고지서출력</a></li>
+															<li><a href="/sub-0305"  target="_blank" potal="">호실배정</a></li>
+															<li><a href="/sub-0309"  potal="">생활관 입퇴사안내</a></li>
+						</ul></li>	
+
+							<li class="group-04">
+								<a href="/sub-04"   potal="">관생자치회</a>
+								<ul class="depth-02">
+
+																<li><a href="/sub-0401"  potal="">자치회칙</a></li>
+															<li><a href="/sub-0405"  potal="">벌점조회</a></li>
+															<li><a href="/sub-0406"  potal="">벌점감면신청서</a></li>
+															<li><a href="/sub-0407"  potal="">관생자치회에 바랍니다.</a></li>
+						</ul></li>	
+
+							<li class="group-05">
+								<a href="/sub-05"   potal="">공감소통</a>
+								<ul class="depth-02">
+
+																<li><a href="/sub-0501"  potal="">공지사항</a></li>
+															<li><a href="/sub-0502"  target="_blank" potal="">학사일정</a></li>
+															<li><a href="/sub-0503"  potal="">자료실(양식함)</a></li>
+															<li><a href="/sub-0504"  potal="">자주하는 질문</a></li>
+															<li><a href="/sub-0505"  potal="">자유게시판</a></li>
+															<li><a href="/sub-0507"  potal="">시설물 고장신고</a></li>
+															<li><a href="/sub-0508"  potal="">건의사항</a></li>
+						</ul></li>
+			</ul>
+
+			<p class="ad">
+				자연 속의 쾌적한 공간, 머무르고 싶은 공간, 아름다운 추억의 공간 
+				<strong><span>국립한밭대학교</span> 학생생활관</strong>
+			</p>
+		</nav>
+	</header>
+</div>
+<p class="lnb-bg"></p>	<!-- //header -->
+
+
+<!-- layout-container -->
+<div id="layout-container">
+	<div id="container">
+		<!-- container-left -->
+		<div id="container-left">
+		
+
+			<nav id="snb">
+				<h2 class="hidden">서브메뉴</h2>
+				<ul class="menu">
+					<li>
+						<a href="javascript:void(0);">생활관 안내</a>
+						<ul>
+							<li><a href='/sub-01' portal='' />생활관 소개</a></li><li><a href='/sub-010504' portal='' />학생생활관 위치도</a></li><li><a href='/sub-010501' portal='' />한밭관</a></li><li><a href='/sub-03' portal='' />모집안내</a></li><li><a href='/sub-010502' portal='' />제1BTL관(1차)</a></li><li><a href='/sub-04' portal='' />관생자치회</a></li><li><a href='/sub-010503' portal='' />제2BTL관(3차)</a></li><li><a href='/sub-05' portal='' />공감소통</a></li><li><a href='/membership' portal='' />회원공간</a></li>						</ul>
+					</li>
+
+
+					<li class="on">
+						<a href="javascript:void(0);">식단표</a>
+						<ul>
+							<li><a href='/sub-0201' portal=''/>생활관 관련 규정</a></li><li><a href='/sub-0202' portal=''/>생활관비</a></li><li><a href='/sub-0203' portal=''/>관생수칙</a></li><li><a href='/sub-0204' portal=''/>벌점부과표</a></li><li><a href='/btl-info' portal=''/>BTL정보공개</a></li>						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<!-- //container-left -->
+
+
+
+		<!-- container-body -->
+		<section id="container-body">
+			<!-- sub title -->
+			<p id="page-location">
+				<a href="/sub-0204" target="" class="prev" style="display:block;">벌점부과표</a>
+				<a href="/" target="" class="next" style="display:none;"></a>
+			</p>
+			<h1 id="contents-title">식단표</h1>
+
+
+			<!-- sub title -->
+			<div id="contents">
+				                                <nav id="tabmenu">
+									<h2 class="hidden">탭메뉴</h2>
+                                        <ul>
+
+											<li class="on"><a href="/sub-020502">BTL관</a></li>
+		
+										 </ul>
+                                </nav>
+
+
+				
+<!-- 페이지 작성 -->
+<h2 class="title-depth-01">식단표</h2>
+<h3 class="title-depth-02">식사시간</h3>
+<ul class="bul-depth-01">
+    <li>[월~토요일] 아침 : 07:30~09:00 | 점심 : 12:00∼14:00 | 저녁 : 17:30~19:00 </li>
+    <li>[일요일 및 공휴일] 아침 : 08:00~09:00 | 점심 : 12:00~13:00 | 저녁 : 18:00∼19:00 </li>
+</ul>
+
+<div class="table-type-01 diet">
+    <table>
+        <caption>요일별 아침 점심 저녁</caption>
+        <thead>
+            <tr>
+                <th scope="col">요일</th>
+                <th scope="col">아침</th>
+				<th scope="col">점심</th>
+				<th scope="col">저녁</th>
+            </tr>
+        </thead>
+        <tbody>
+	            <tr>
+				<th scope="row">11월 24일(월)</th>
+                <td class="txt-left">
+					쌀밥<br />
+두부근대된장국<br />
+닭살카레볶음<br />
+땅콩연근조림<br />
+배추김치<br />
+토스트식빵/씨리얼&amp;우유				</td>
+				<td class="txt-left">
+					차조밥<br />
+북창동순두부찌개<br />
+생선까스<br />
+느타리버섯볶음<br />
+치커리유자청무침<br />
+배추김치<br />
+&lt;Plus Menu&gt;<br />
+양상추샐러드*드레싱2종				</td>
+				<td class="txt-left">
+					쌀밥<br />
+매운콩나물국<br />
+투움바함박&amp;숙주볶음<br />
+참치야채볶음<br />
+무말랭이무침<br />
+배추김치				</td>
+            </tr>
+	            <tr>
+				<th scope="row">11월 25일(화)</th>
+                <td class="txt-left">
+					쌀밥<br />
+닭곰탕<br />
+미트볼조림<br />
+마늘종어묵볶음<br />
+깍두기<br />
+토스트식빵/씨리얼&amp;우유				</td>
+				<td class="txt-left">
+					기장밥<br />
+청양초어묵국<br />
+로제찜닭<br />
+두부두루치기<br />
+미역줄기볶음<br />
+배추김치<br />
+&lt;Plus Menu&gt;<br />
+양상추샐러드*드레싱2종				</td>
+				<td class="txt-left">
+					핫토마토소스치킨까스<br />
+추가밥<br />
+크림스프<br />
+양배추샐러드<br />
+오이피클<br />
+배추김치				</td>
+            </tr>
+	            <tr>
+				<th scope="row">11월 26일(수)</th>
+                <td class="txt-left">
+					쌀밥<br />
+콩나물무채국<br />
+미니돈까스<br />
+계란찜<br />
+배추김치<br />
+토스트식빵/씨리얼&amp;우유				</td>
+				<td class="txt-left">
+					양지쌀국수<br />
+추가밥<br />
+짬뽕군만두<br />
+양파오이초절이<br />
+배추김치<br />
+&lt;Plus Menu&gt;<br />
+양상추샐러드*드레싱2종				</td>
+				<td class="txt-left">
+					쌀밥<br />
+치즈부대찌개<br />
+난자완스<br />
+구운어묵볶음<br />
+얼갈이배추무침<br />
+깍두기				</td>
+            </tr>
+	            <tr>
+				<th scope="row">11월 27일(목)</th>
+                <td class="txt-left">
+					쌀밥<br />
+경상도식얼큰소고기무국<br />
+돈육메추리알장조림<br />
+두부구이*양념장<br />
+깍두기<br />
+토스트식빵/씨리얼&amp;우유				</td>
+				<td class="txt-left">
+					버터커리덮밥<br />
+치킨텐더브리또<br />
+오이피클<br />
+배추김치<br />
+&lt;Plus Menu&gt;<br />
+양상추샐러드*드레싱2종				</td>
+				<td class="txt-left">
+					쌀밥<br />
+뼈없는감자탕<br />
+가자미카레튀김<br />
+김치전<br />
+오이부추무침<br />
+깍두기				</td>
+            </tr>
+	            <tr>
+				<th scope="row">11월 28일(금)</th>
+                <td class="txt-left">
+					쌀밥<br />
+황태순두부탕<br />
+스팸감자볶음<br />
+재래김/양념장<br />
+배추김치<br />
+토스트식빵/씨리얼&amp;우유				</td>
+				<td class="txt-left">
+					사리곰탕<br />
+쌀밥<br />
+오징어초무침<br />
+도토리묵/양념장<br />
+파채콩나물무침<br />
+깍두기<br />
+&lt;Plus Menu&gt;<br />
+양상추샐러드*드레싱2종				</td>
+				<td class="txt-left">
+					쌀밥<br />
+어묵김치국<br />
+돈육간장파채불고기<br />
+호박들깨볶음<br />
+양념깻잎지<br />
+깍두기				</td>
+            </tr>
+	            <tr>
+				<th scope="row">11월 29일(토)</th>
+                <td class="txt-left">
+					쌀밥&amp;누룽지<br />
+참치김치찌개<br />
+계란말이<br />
+알감자조림<br />
+깍두기<br />
+우유				</td>
+				<td class="txt-left">
+					소고기야채볶음밥<br />
+우동국물<br />
+버터갈릭감자튀김<br />
+메추리맛살샐러드<br />
+배추김치<br />
+요구르트				</td>
+				<td class="txt-left">
+					쌀밥<br />
+시금치된장국<br />
+훈제오리볶음<br />
+삼색묵무침<br />
+건파래볶음<br />
+배추김치				</td>
+            </tr>
+	            <tr>
+				<th scope="row">11월 30일(일)</th>
+                <td class="txt-left">
+					새우버거<br />
+단호박크림스프<br />
+씨리얼&amp;우유<br />
+고구마맛탕<br />
+사과				</td>
+				<td class="txt-left">
+					쌀밥<br />
+왕만두육개장<br />
+계란장조림<br />
+새송이호박볶음<br />
+상추부추무침<br />
+깍두기				</td>
+				<td class="txt-left">
+					쌀밥<br />
+콩나물국<br />
+파돈까스/소스<br />
+쫄면야채무침<br />
+우엉들깨무침<br />
+배추김치				</td>
+            </tr>
+	        </tbody>
+    </table>
+</div>
+
+<h3 class="title-depth-02">원산지 표시</h3>
+<ul class="bul-depth-01">
+    <li>쇠고기(호주산), 돼지고기(국내산), 닭고기(국내산) , 쌀/잡곡(국내산), 배추김치(배추:국내산, 고추분:중국산), 탕,찌개용 김치(배추:중국산, 고추분:중국산)</li>
+</ul>
+<!-- //페이지 작성 -->
+
+			</div>
+
+
+		</section>
+
+
+
+		<!-- //container-body -->
+	</div>
+</div>
+<!-- //layout-container -->
+
+<!-- layout-footer -->
+<div class="footer">
+    <div class="footer_top">
+        <div class="layout">
+			<ul class="site_map">
+                <li><a href="http://www.hanbat.ac.kr/" target="_blank" rel="noopener noreferrer" title="새창열림">한밭대학교</a></li>
+                <li><a href="https://my.hanbat.ac.kr/" target="_blank" rel="noopener noreferrer" title="새창열림">통합학사정보시스템</a></li>
+                <li><a href="https://linc.hanbat.ac.kr/" target="_blank" rel="noopener noreferrer" title="새창열림">LINK+사업단</a></li>
+                <li><a href="https://www.hanbat.ac.kr/fund/" target="_blank" rel="noopener noreferrer" title="새창열림">발전기금</a></li>
+                <li><a href="http://www.hanbat.ac.kr/kor/sub05_08.do" target="_blank" rel="noopener noreferrer" title="새창열림">인터넷증명발급</a></li>
+                <li><a href="https://lib.hanbat.ac.kr/" target="_blank" rel="noopener noreferrer" title="새창열림">도서관</a></li>
+                <li><a href="https://mail.hanbat.ac.kr" target="_blank" rel="noopener noreferrer" title="새창열림">웹메일</a></li>
+                <li><a href="http://cyber.hanbat.ac.kr/" target="_blank" rel="noopener noreferrer" title="새창열림">사이버한밭</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer_bottom">
+        <div class="layout">
+            <ul class="menu">
+                <li><a href="https://www.hanbat.ac.kr/kor/sitemap_03.do" target="_blank" rel="noopener noreferrer" title="새창열림"><strong>개인정보처리방침</strong></a></li>
+                <li><a href="/sub-020101">생활관규정</a></li>
+                <li><a href="/sub-0503">자료실</a></li>
+                <li><a href="/sub-0106">찾아오시는길</a></li>
+                <li><a href="/sub-0204">벌점부과표</a></li>
+				<li><a href="/sub-0301">관생선발안내</a></li>	
+			</ul>
+            <address>
+                <p><em>34158 대전광역시 유성구 동서대로 125 (덕명동)</em>   <em><span>TEL</span> : <a href="tel:042-828-8778">042-828-8778</a>   <span>FAX</span> : 042-821-1941</em>
+                <p><em>COPYRIGHT (C) 2017 BY HANBAT NATIONAL UNIVERSITY.</em> <em>ALL RIGHTS RESERVED</em></p></p>
+            </address>
+        </div>
+    </div>
+</div>
+<!-- //layout-footer -->
+</body>
+</html>
