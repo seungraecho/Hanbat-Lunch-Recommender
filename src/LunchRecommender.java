@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * 점심 추천 도우미 프로그램 (석식 파싱 버그 수정 버전)
+ * 점심 추천 도우미 프로그램 (제외 항목 기능 추가 버전)
  */
 public class LunchRecommender extends JFrame {
 
@@ -70,10 +70,14 @@ public class LunchRecommender extends JFrame {
     "KFC", "피자헛", "도미노피자"
     };
 
+    // 제외된 메뉴를 저장할 Set (중복 방지 및 빠른 검색)
+    private final Set<String> excludedItems = new HashSet<>();
+
     // UI 컴포넌트
     private JComboBox<Integer> countComboBox;
     private JTextArea resultTextArea;
     private JButton recommendButton;
+    private JButton excludeButton; // 제외 항목 버튼 추가
 
     public LunchRecommender() {
         initializeFrame();
@@ -234,18 +238,16 @@ public class LunchRecommender extends JFrame {
         }
 
         try {
-            // [수정] 시간에 따라 중식(type B) 또는 석식(type C)을 찾도록 변경
             Calendar cal = Calendar.getInstance();
             int hour = cal.get(Calendar.HOUR_OF_DAY);
             
-            String targetType = "B"; // 기본값 중식
+            String targetType = "B"; 
             if (hour >= 14 && hour < 19) {
-                targetType = "C"; // 석식
+                targetType = "C"; 
             }
 
             int typeIndex = json.indexOf("\"type\":\"" + targetType + "\"");
             
-            // 만약 해당 타입(예: 석식)이 없으면 중식이라도 보여주기 위해 예외처리 가능하나, 여기선 오류 메시지 반환
             if (typeIndex == -1) {
                 return (targetType.equals("C") ? "석식" : "중식") + " 정보를 찾을 수 없습니다.";
             }
@@ -254,7 +256,6 @@ public class LunchRecommender extends JFrame {
             int itemEnd = json.indexOf("}", typeIndex);
             String menuJson = json.substring(itemStart, itemEnd + 1);
 
-            // 날짜 계산 로직 (기존 유지)
             if (hour >= 19) {
                 cal.add(Calendar.DAY_OF_MONTH, 1);
             }
@@ -264,7 +265,7 @@ public class LunchRecommender extends JFrame {
                 return "주말에는 운영하지 않습니다.";
             }
 
-            int menuIndex = dayOfWeek - 1; // 일=0, 월=1 ...
+            int menuIndex = dayOfWeek - 1;
             String key = "\"menu" + menuIndex + "\":";
             int keyIndex = menuJson.indexOf(key);
             
@@ -290,7 +291,6 @@ public class LunchRecommender extends JFrame {
         Calendar cal = Calendar.getInstance();
         int hour = cal.get(Calendar.HOUR_OF_DAY);
         
-        // 다음 날 조식 로직
         if (hour >= 19 || hour < 4) {
             cal.add(Calendar.DAY_OF_MONTH, 1);
         }
@@ -301,47 +301,41 @@ public class LunchRecommender extends JFrame {
             int dateIndex = html.indexOf(todayStr);
             if (dateIndex == -1) return "오늘의 식단 정보가 없습니다.";
 
-            // [수정] 식사 시간대에 따라 건너뛸 <td> 개수 설정 (테이블 구조: 날짜 | 조식 | 중식 | 석식)
-            int skipTdCount = 0; // 기본 조식 (바로 다음 td)
+            int skipTdCount = 0; 
             
             if (hour >= 19 || hour < 4) {
-                skipTdCount = 0; // 다음날 조식
+                skipTdCount = 0;
             } else if (hour < 9) {
-                skipTdCount = 0; // 조식
+                skipTdCount = 0;
             } else if (hour < 14) {
-                skipTdCount = 1; // 중식
+                skipTdCount = 1;
             } else {
-                skipTdCount = 2; // 석식
+                skipTdCount = 2;
             }
 
-            // 날짜 위치부터 시작해서 원하는 칸만큼 <td> 태그 찾기
             int currentPos = dateIndex;
             for (int i = 0; i <= skipTdCount; i++) {
                 currentPos = html.indexOf("<td", currentPos);
                 if (currentPos == -1) return "식단 정보를 찾을 수 없습니다.";
-                // 루프 마지막이 아니면 다음 검색을 위해 현재 태그 뒤로 인덱스 이동
                 if (i < skipTdCount) {
                     currentPos++; 
                 }
             }
             
-            // 현재 currentPos는 목표 <td>의 시작점
             int closeTd = html.indexOf("</td>", currentPos);
             String menuContent = html.substring(currentPos, closeTd)
-                    .replaceAll("<td[^>]*>", "") // td 태그 잔여물 제거
+                    .replaceAll("<td[^>]*>", "") 
                     .replaceAll("<br\\s*/?>", "\n")
-                    .replaceAll("<.*?>", "") // 나머지 태그 제거
+                    .replaceAll("<.*?>", "") 
                     .trim();
 
             return decodeHtmlEntities(menuContent);
 
         } catch (Exception e) {
-            e.printStackTrace();
             return "메뉴 파싱 중 오류가 발생했습니다.";
         }
     }
 
-    // HTML 엔티티 디코딩 (공통 메서드)
     private String decodeHtmlEntities(String text) {
         return text.replace("&amp;", "&")
                    .replace("&nbsp;", " ")
@@ -373,25 +367,124 @@ public class LunchRecommender extends JFrame {
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         panel.add(new JScrollPane(resultTextArea), BorderLayout.CENTER);
 
-        // 하단 버튼
+        // 하단 버튼 패널
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        
+        // [추가] 제외 항목 버튼
+        excludeButton = new JButton("제외 항목");
+        excludeButton.addActionListener(this::openExclusionDialog);
+        bottomPanel.add(excludeButton);
+
         recommendButton = new JButton("추천받기!");
         recommendButton.addActionListener(this::onRecommendButtonClick);
         bottomPanel.add(recommendButton);
+
         panel.add(bottomPanel, BorderLayout.SOUTH);
 
         return panel;
     }
 
+    // [추가] 제외 항목 설정 다이얼로그
+    private void openExclusionDialog(ActionEvent e) {
+        JDialog dialog = new JDialog(this, "제외 항목 설정", true); // 모달 창
+        dialog.setSize(400, 400);
+        dialog.setLocationRelativeTo(this);
+        dialog.setLayout(new BorderLayout());
+
+        // 체크박스 패널 (스크롤 가능)
+        JPanel checkboxPanel = new JPanel(new GridLayout(0, 2, 10, 10)); // 2열 그리드
+        checkboxPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        
+        List<JCheckBox> checkBoxes = new ArrayList<>();
+        
+        // 전체 메뉴에 대해 체크박스 생성
+        for (String menu : RANDOM_MENU_LIST) {
+            JCheckBox checkBox = new JCheckBox(menu);
+            // 이미 제외 목록에 있다면 체크 상태로 표시
+            if (excludedItems.contains(menu)) {
+                checkBox.setSelected(true);
+            }
+            checkBoxes.add(checkBox);
+            checkboxPanel.add(checkBox);
+        }
+
+        dialog.add(new JScrollPane(checkboxPanel), BorderLayout.CENTER);
+
+        // 버튼 패널 (확인, 적용, 취소)
+        JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        
+        JButton confirmBtn = new JButton("확인");
+        JButton applyBtn = new JButton("적용");
+        JButton cancelBtn = new JButton("취소");
+
+        // 확인 버튼: 저장하고 닫기
+        confirmBtn.addActionListener(event -> {
+            applyExclusions(checkBoxes);
+            dialog.dispose();
+        });
+
+        // 적용 버튼: 저장하고 창 유지
+        applyBtn.addActionListener(event -> {
+            applyExclusions(checkBoxes);
+            JOptionPane.showMessageDialog(dialog, "제외 항목이 적용되었습니다.");
+        });
+
+        // 취소 버튼: 저장하지 않고 닫기
+        cancelBtn.addActionListener(event -> dialog.dispose());
+
+        btnPanel.add(confirmBtn);
+        btnPanel.add(applyBtn);
+        btnPanel.add(cancelBtn);
+
+        dialog.add(btnPanel, BorderLayout.SOUTH);
+        dialog.setVisible(true);
+    }
+
+    // 체크박스 상태를 excludedItems Set에 반영하는 헬퍼 메서드
+    private void applyExclusions(List<JCheckBox> checkBoxes) {
+        excludedItems.clear();
+        for (JCheckBox box : checkBoxes) {
+            if (box.isSelected()) {
+                excludedItems.add(box.getText());
+            }
+        }
+    }
+
     private void onRecommendButtonClick(ActionEvent e) {
         int count = (Integer) countComboBox.getSelectedItem();
-        List<String> menuList = new ArrayList<>(Arrays.asList(RANDOM_MENU_LIST));
-        Collections.shuffle(menuList, ThreadLocalRandom.current());
+        
+        // [수정] 제외된 항목을 필터링하여 후보 리스트 생성
+        List<String> availableMenus = new ArrayList<>();
+        for (String menu : RANDOM_MENU_LIST) {
+            if (!excludedItems.contains(menu)) {
+                availableMenus.add(menu);
+            }
+        }
+
+        // 모든 메뉴가 제외되었을 경우 처리
+        if (availableMenus.isEmpty()) {
+            resultTextArea.setText("모든 메뉴가 제외되었습니다!\n제외 항목을 해제해주세요.");
+            return;
+        }
+
+        // 요청 수보다 가능한 메뉴가 적을 경우 처리
+        if (availableMenus.size() < count) {
+            resultTextArea.setText("추천 가능한 메뉴가 부족합니다.\n(제외 항목이 너무 많습니다)");
+            return;
+        }
+
+        // 셔플 후 추천
+        Collections.shuffle(availableMenus, ThreadLocalRandom.current());
 
         StringBuilder result = new StringBuilder("오늘의 추천 메뉴입니다!\n\n");
+        // 제외된 항목 정보 표시 (선택사항)
+        if (!excludedItems.isEmpty()) {
+            result.append("[제외된 항목 수: ").append(excludedItems.size()).append("개]\n\n");
+        }
+
         for (int i = 0; i < count; i++) {
             result.append("  ").append(i + 1).append(". ")
-                  .append(menuList.get(i)).append("\n");
+                  .append(availableMenus.get(i)).append("\n");
         }
 
         resultTextArea.setText(result.toString());
